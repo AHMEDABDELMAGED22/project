@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MODIFIED: Arabic title matching target -->
+    <title>ذا بوتشري</title>
+
+    <!-- ADDED: Cairo (Arabic) and Poppins (English) fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- ADDED: Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- LINKED: Main stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ============================================================
+         HEADER - BLACK NAVIGATION BAR
+    ============================================================ -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="index.html">The Butchery</a>
+            </div>
+
+            <div class="header-search">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Search" class="search-input">
+            </div>
+
+            <nav class="header-nav">
+                <a href="branch.html">BRANCHES</a>
+                <a href="about.html">ABOUT US</a>
+                <a href="policy.html">PRIVACY POLICY</a>
+                <a href="login.html">LOGIN</a>
+                <a href="#" class="lang-switch">عربي</a>
+                <a href="#" class="cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================================
+         HERO SECTION - Full Width Banner
+    ============================================================ -->
+    <!-- ============================================================
+         HERO SECTION - Full Width Banner with Carousel & Overlay
+    ============================================================ -->
+    <section class="hero-section">
+
+        <!-- CAROUSEL -->
+        <div class="hero-carousel">
+            <!-- Slide 1 -->
+            <div class="carousel-slide active-slide">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1400&h=600&fit=crop"
+                    alt="Grilled Skewers" class="hero-image">
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=1400&h=600&fit=crop"
+                    alt="Packaging" class="hero-image">
+            </div>
+            <!-- Slide 3 -->
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=1400&h=600&fit=crop"
+                    alt="Skewers" class="hero-image">
+            </div>
+        </div>
+
+        <!-- BRAND OVERLAY (Circle Logo + Text) -->
+        <div class="hero-brand-overlay">
+            <div class="brand-logo-circle">
+                <img src="thebutchry.png" alt="The Butchery" class="brand-logo-img"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-weight:bold;font-size:24px\'>TB</span>'">
+            </div>
+            <div class="brand-text-container">
+                <h1 class="brand-name">The Butchery</h1>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ============================================================
+         ORDER METHOD TABS - DELIVERY / PICKUP
+         - Matching target design with underline on active tab
+    ============================================================ -->
+    <section class="order-method-section">
+        <div class="order-tabs">
+            <button class="tab-button" onclick="selectTab(this, 'delivery')">
+                Delivery
+            </button>
+            <button class="tab-button active" onclick="selectTab(this, 'pickup')">
+                Pickup
+            </button>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         LOCATION & TIME SELECTION
+         - Allows selection of branch and pickup time
+    ============================================================ -->
+    <section class="location-time-section">
+        <div class="selection-container">
+
+            <div class="selector-item">
+                <div class="selector-content" onclick="window.location.href='area.html'">
+                    <div class="selector-label">
+                        <span class="label-title">Pickup From</span>
+                        <span class="label-value">Qurain Markets</span>
+                    </div>
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+            </div>
+
+            <div class="selector-item">
+                <div class="selector-content">
+                    <div class="selector-label">
+                        <span class="label-title">Pickup Time</span>
+                        <span class="label-value">12 Jan Tomorrow 10:00 AM - 01:00 PM</span>
+                    </div>
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================
+         CATEGORIES GRID
+         - Product categories in 3-column grid
+         - Dark cards with hover effects
+    ============================================================ -->
+    <!-- ============================================================
+         CATEGORIES GRID
+    ============================================================ -->
+    <section class="categories-section">
+        <div class="categories-grid">
+
+            <!-- Card 1: New -->
+            <div class="category-card" onclick="window.location.href='products.html?category=new'">
+                <div class="category-img-container" style="background-color: #000;">
+                    <div class="new-badge-container">
+                        <span class="big">NEW</span>
+                        <span class="small">WINTER ITEMS</span>
+                    </div>
+                </div>
+                <h3>Our New</h3>
+                <p>9 Products</p>
+            </div>
+
+            <!-- Card 2: Boxes -->
+            <div class="category-card" onclick="window.location.href='products.html?category=boxes'">
+                <div class="category-img-container">
+                    <i class="fas fa-box category-icon"></i>
+                </div>
+                <h3>Boxes</h3>
+                <p>22 Products</p>
+            </div>
+
+            <!-- Card 3: Kabsa -->
+            <div class="category-card" onclick="window.location.href='products.html?category=kabsa'">
+                <div class="category-img-container">
+                    <i class="fas fa-utensils category-icon"></i>
+                </div>
+                <h3>Kabsa</h3>
+                <p>2 Products</p>
+            </div>
+
+            <!-- Card 4: Burgers -->
+            <div class="category-card" onclick="window.location.href='products.html?category=burgers'">
+                <div class="category-img-container">
+                    <i class="fas fa-hamburger category-icon"></i>
+                </div>
+                <h3>Burgers</h3>
+                <p>15 Products</p>
+            </div>
+
+            <!-- Card 5: Skewers -->
+            <div class="category-card" onclick="window.location.href='products.html?category=skewers'">
+                <div class="category-img-container">
+                    <i class="fas fa-drumstick-bite category-icon"></i>
+                </div>
+                <h3>Skewers</h3>
+                <p>28 Products</p>
+            </div>
+
+            <!-- Card 6: Steaks -->
+            <div class="category-card" onclick="window.location.href='products.html?category=steaks'">
+                <div class="category-img-container">
+                    <i class="fas fa-bacon category-icon"></i>
+                </div>
+                <h3>Steaks</h3>
+                <p>12 Products</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer class="main-footer">
+        <div class="footer-logo">
+            <h2>THE BUTCHERY</h2>
+        </div>
+
+        <div class="footer-nav">
+            <a href="status.html">ORDER STATUS</a>
+            <a href="branch.html">BRANCHES</a>
+            <a href="about.html">ABOUT US</a>
+            <a href="policy.html">PRIVACY POLICY</a>
+        </div>
+
+        <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <div class="footer-apps">
+            <!-- App links placeholder -->
+        </div>
+
+        <div class="footer-copy">
+            <p>Powered by MNASATI</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT: Tabs & Carousel -->
+    <script>
+        // TAB SWITCHING
+        function selectTab(element, type) {
+            const tabs = document.querySelectorAll('.tab-button');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // CAROUSEL ROTATION
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+
+        if (slides.length > 0) {
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active-slide');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active-slide');
+            }, 5000); // Change image every 5 seconds
+        }
+    </script>
+</body>
+
+</html>

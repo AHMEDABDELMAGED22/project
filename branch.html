@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MODIFIED: Updated title for Branches page -->
+    <title>Branches - ذا بوتشري</title>
+
+    <!-- ADDED: Fonts and icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- LINKED: Main stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- ADDED: Branches page styles -->
+    <style>
+        /* BRANCHES PAGE CONTAINER */
+        /* WHY: Layout for branch listings */
+        .branches-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            background-color: #f5f5f5;
+            min-height: calc(100vh - 60px - 400px);
+        }
+
+        /* PAGE HEADER */
+        /* WHY: Page title and description */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* BRANCHES GRID */
+        /* WHY: Display multiple branches in grid format */
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        /* BRANCH CARD */
+        /* WHY: Each branch displayed in a card */
+        /* HOW: White background, icon, name, address, contact */
+        .branch-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 35px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .branch-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        /* BRANCH ICON */
+        /* WHY: Visual indicator */
+        .branch-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        /* BRANCH NAME */
+        /* WHY: Branch location title */
+        .branch-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #000;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* BRANCH INFO */
+        /* WHY: Address and contact details */
+        .branch-info {
+            margin: 15px 0;
+        }
+
+        .info-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            color: #666;
+            font-size: 16px;
+            width: 20px;
+            flex-shrink: 0;
+        }
+
+        .info-text {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 28px;
+            }
+
+            .branches-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+
+    <div class="hid">
+        <div class="hid-1">
+            <div class="t-butchry"><a href="newproject.php"> ذا بوتشري </a> </div>
+            <button class="s-button"><i class="fa-solid fa-magnifying-glass"></i> </button>
+            <div class="s-input"> <input type="search" value="ابحث" onfocus="this.value ='' ;"> </div>
+
+
+        </div>
+
+
+        <div class="hid-2">
+
+
+            <a href="branch.html">الفروع</a>
+            <a href="about.html">من نحن</a>
+            <a href="policy.html">سياسة الخصوصية</a>
+            <a href="login.html">تسجيل الدخول</a>
+
+
+
+        </div>
+        <div class="hid-3">
+            <a href="#" class="e">English </a>
+            <a href="#" class="fa-solid fa-cart-shopping"></a>
+            <i class="shop">1</i>
+        </div>
+    </div>
+    <div class="space"></div>

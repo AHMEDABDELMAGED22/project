@@ -1,0 +1,637 @@
+/* ============================================================
+   THE BUTCHERY WEBSITE - MAIN STYLESHEET
+   Purpose: Complete styling to match https://order.thebutcherykw.com/
+   
+   STRUCTURE:
+   1. Global Styles & Reset
+   2. Header Section
+   3. Hero Section
+   4. Order Method Section
+   5. Location & Time Selection
+   6. Category Grid
+   7. Footer Section
+   8. Responsive Design
+   ============================================================ */
+
+/* ============================================================
+   1. GLOBAL STYLES & RESET
+   - Reset default browser styles for consistency
+   - Define color scheme and typography
+   - Set up base styles matching target design
+   ============================================================ */
+
+/* WHY: Reset margin/padding to have full control over spacing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* WHY: Set base font and direction for Arabic/English content */
+body {
+    font-family: 'Poppins', 'Cairo', sans-serif;
+    /* Poppins for En, Cairo for Ar */
+    direction: ltr;
+    /* Main interface is LTR based on screenshot, content can be RTL if Arabic */
+    background-color: #FFFFFF;
+    /* White background */
+    color: #000000;
+    line-height: 1.5;
+}
+
+/* Scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ============================================================
+   2. HEADER SECTION
+   ============================================================ */
+
+.main-header {
+    background-color: #000000;
+    color: #ffffff;
+    height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-logo a {
+    font-size: 22px;
+    font-weight: 700;
+    color: #FFF;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.header-search {
+    flex: 1;
+    max-width: 500px;
+    margin: 0 40px;
+    position: relative;
+    background: #FFF;
+    border-radius: 25px;
+    /* Rounded pill shape */
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    color: #888;
+    font-size: 14px;
+}
+
+.search-input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    padding: 0 15px 0 40px;
+    /* Space for icon */
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    outline: none;
+    border-radius: 25px;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-nav a {
+    font-size: 13px;
+    font-weight: 600;
+    color: #FFF;
+    text-transform: uppercase;
+    transition: opacity 0.3s;
+}
+
+.header-nav a:hover {
+    opacity: 0.8;
+}
+
+.lang-switch {
+    font-family: 'Cairo', sans-serif;
+}
+
+.cart-icon {
+    position: relative;
+    font-size: 20px !important;
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background-color: #C00;
+    /* Red badge */
+    color: #FFF;
+    font-size: 10px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* ============================================================
+   3. HERO SECTION
+   ============================================================ */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    background-color: #000;
+    margin-bottom: 60px;
+    /* Space for the overlapping logo */
+}
+
+/* CAROUSEL STYLES */
+.hero-carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel-slide.active-slide {
+    opacity: 1;
+    z-index: 1;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* BRAND OVERLAY (The Red Circle Area from user request) */
+.hero-brand-overlay {
+    position: absolute;
+    bottom: -50px;
+    /* Half overlapping */
+    left: 40px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.brand-logo-circle {
+    width: 120px;
+    height: 120px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.brand-logo-img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+.brand-text-container {
+    padding-top: 60px;
+    /* Align with bottom half - Increased to push text lower */
+}
+
+.brand-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+    background-color: #FFF;
+    /* Optional: if needed to read over bg, but usually sits on white content area */
+    padding: 5px 10px;
+    border-radius: 4px;
+    /* Based on image, it seems to sit on the white bar below, so no bg needed if layout is correct */
+    background: transparent;
+}
+
+/* RESPONSIVE HERO */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 250px;
+        margin-bottom: 50px;
+    }
+
+    .hero-brand-overlay {
+        left: 20px;
+        bottom: -40px;
+    }
+
+    .brand-logo-circle {
+        width: 90px;
+        height: 90px;
+    }
+
+    .brand-name {
+        font-size: 18px;
+    }
+}
+
+
+/* ============================================================
+   4. ORDER METHOD & LOCATION
+   ============================================================ */
+.order-method-section {
+    background: #FFF;
+    border-bottom: 1px solid #EEE;
+}
+
+.order-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding-top: 10px;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 15px 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #888;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-button.active {
+    color: #000;
+    border-bottom-color: #000;
+}
+
+.location-time-section {
+    background: #FFF;
+    padding: 20px 0;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.selection-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.selector-item {
+    border-bottom: 1px solid #EEE;
+}
+
+.selector-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.selector-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-title {
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.label-value {
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+}
+
+/* ============================================================
+   5. CATEGORY GRID
+   ============================================================ */
+.categories-section {
+    padding: 60px 0;
+    background: #FFF;
+}
+
+.categories-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+}
+
+.category-img-container {
+    width: 100%;
+    aspect-ratio: 1;
+    /* Square */
+    background-color: #1A1A1A;
+    /* Dark card bg */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.category-icon {
+    font-size: 60px;
+    color: #FFF;
+}
+
+/* Text styles */
+.category-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.category-card p {
+    font-size: 13px;
+    color: #666;
+}
+
+/* New Badge */
+.new-badge-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #FFF;
+}
+
+.new-badge-container span.big {
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.new-badge-container span.small {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* ============================================================
+   7. FOOTER SECTION
+   - Black background matching header
+   - Centered content with logo, links, social icons
+   - Professional, clean design
+   ============================================================ */
+
+/* MAIN FOOTER CONTAINER */
+/* WHY: Consistent black footer matching target design */
+/* HOW: Black background, white text, centered content */
+.main-footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 50px 20px 30px;
+    text-align: center;
+}
+
+/* FOOTER LOGO */
+/* WHY: Brand presence in footer */
+.footer-logo {
+    margin-bottom: 25px;
+}
+
+.footer-logo img {
+    max-width: 120px;
+    height: auto;
+}
+
+.footer-logo h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* FOOTER NAVIGATION LINKS */
+/* WHY: Quick access to important pages */
+/* HOW: Horizontal list with separators */
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.footer-nav a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: #cccccc;
+}
+
+/* SOCIAL MEDIA ICONS */
+/* WHY: Connect users to social platforms */
+/* HOW: Icon buttons with circular backgrounds */
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.footer-social a {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+/* COPYRIGHT TEXT */
+/* WHY: Legal copyright notice */
+.footer-copy {
+    font-size: 13px;
+    color: #999;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================
+   8. RESPONSIVE DESIGN
+   - Mobile-first approach
+   - Breakpoints matching common device sizes
+   - Maintains usability on all screen sizes
+   ============================================================ */
+
+/* TABLET & BELOW (max-width: 992px) */
+/* WHY: Adjust layout for medium screens */
+@media (max-width: 992px) {
+
+    /* HEADER ADJUSTMENTS */
+    /* WHY: Simplify header for tablet */
+    .header-search {
+        max-width: 300px;
+        margin: 0 15px;
+    }
+
+    .header-nav a {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+
+    /* CATEGORY GRID: 2 columns instead of 3 */
+    /* WHY: Better card size for medium screens */
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+/* MOBILE (max-width: 768px) */
+/* WHY: Optimize for mobile devices */
+@media (max-width: 768px) {
+
+    /* HEADER: Vertical stacking or simplified */
+    /* WHY: Limited horizontal space on mobile */
+    .header-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        height: auto;
+        padding: 10px;
+    }
+
+    .header-logo {
+        flex: 0 0 auto;
+        margin-bottom: 10px;
+    }
+
+    .header-search {
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin: 0 0 10px 0;
+        order: 3;
+    }
+
+    .header-nav {
+        flex: 1 1 auto;
+        gap: 8px;
+        font-size: 11px;
+    }
+
+    /* HERO: Reduced height */
+    /* WHY: Mobile screens need more compact design */
+    .hero-section {
+        min-height: 250px;
+    }
+
+    .logo-circle {
+        width: 90px;
+        height: 90px;
+    }
+
+    .hero-logo h1 {
+        font-size: 22px;
+    }
+
+    /* CATEGORY GRID: Single column */
+    /* WHY: Full-width cards for better mobile UX */
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* FOOTER: Adjusted spacing */
+    .footer-nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* SMALL MOBILE (max-width: 480px) */
+/* WHY: Extra small screens need further optimization */
+@media (max-width: 480px) {
+
+    .header-nav a {
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    .tab-button {
+        padding: 15px 25px;
+        font-size: 14px;
+    }
+
+    .category-card {
+        padding: 30px 15px 20px;
+        min-height: 180px;
+    }
+
+    .category-icon i {
+        font-size: 60px !important;
+    }
+}

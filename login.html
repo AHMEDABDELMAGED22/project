@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MODIFIED: Updated title to match target exactly -->
+    <!-- WHY: User requested to match https://order.thebutcherykw.com/login -->
+    <title>تسجيل دخول - ذا بوتشري</title>
+
+    <!-- ADDED: Same fonts and icons as other pages for consistency -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- LINKED: Main stylesheet for header/footer -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- ADDED: Login-specific styles matching target exactly -->
+    <!-- WHY: Target has very specific minimalist design requirements -->
+    <!-- HOW: Light grey background, simple white inputs, thin borders -->
+    <style>
+        /* MODIFIED: Complete redesign to match target login page */
+        /* WHY: User requested exact match to https://order.thebutcherykw.com/login */
+
+        /* PAGE BACKGROUND */
+        /* MODIFIED: Light grey instead of white */
+        /* WHY: Target uses #F5F5F5 background for entire page */
+        body {
+            background-color: #F5F5F5 !important;
+        }
+
+        /* TITLE BAR */
+        /* ADDED: Grey bar below header with page title and back button */
+        /* WHY: Target has distinct title section matching homepage structure */
+        .page-title-bar {
+            background-color: #F5F5F5;
+            padding: 16px 20px;
+            border-bottom: 1px solid #E8E8E8;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-button-login {
+            font-size: 20px;
+            color: #333;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .page-title-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000;
+            margin: 0 auto;
+        }
+
+        /* LOGIN PAGE CONTAINER */
+        /* MODIFIED: Simpler layout with no card styling */
+        /* WHY: Target has flat design, no white card/shadow */
+        .login-page {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: transparent;
+            /* MODIFIED: No white background */
+        }
+
+        /* PAGE HEADER */
+        /* MODIFIED: Centered text without heavy styling */
+        /* WHY: Target has simple centered heading "تسجيل دخول" */
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header h1 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 8px;
+        }
+
+        .login-header p {
+            font-size: 14px;
+            color: #666;
+            font-weight: 400;
+        }
+
+        /* FORM GROUP */
+        /* MODIFIED: Right-aligned labels, simpler structure */
+        /* WHY: Target has Arabic labels aligned right above inputs */
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+            text-align: right;
+            /* MODIFIED: Right-aligned for Arabic */
+        }
+
+        /* INPUT FIELDS */
+        /* MODIFIED: Very thin borders, larger padding, white background */
+        /* WHY: Target has minimalist input design with light #E0E0E0 borders */
+        /* HOW: Pure white background, subtle border, minimal rounding */
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #E0E0E0 !important;
+            /* MODIFIED: Very light border */
+            border-radius: 5px;
+            /* MODIFIED: Subtle rounding */
+            font-size: 15px;
+            font-family: 'Cairo', sans-serif;
+            background-color: #FFFFFF;
+            /* MODIFIED: Pure white */
+            transition: border-color 0.2s ease;
+            outline: none;
+            color: #333;
+        }
+
+        /* PLACEHOLDER STYLING */
+        /* ADDED: Light grey placeholder text */
+        /* WHY: Target has subtle placeholders */
+        .form-input::placeholder {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* FOCUS STATE */
+        /* MODIFIED: Subtle border color change on focus */
+        /* WHY: Target has minimal focus indication, no box shadow */
+        .form-input:focus {
+            border-color: #999 !important;
+            box-shadow: none;
+            /* REMOVED: No box shadow in target */
+        }
+
+        /* LOGIN BUTTON */
+        /* MODIFIED: Dark grey/black button, full width */
+        /* WHY: Target uses #222222 dark button with white text */
+        /* HOW: Full width, rounded corners matching inputs */
+        .login-button {
+            width: 100%;
+            padding: 16px;
+            background-color: #222222;
+            /* MODIFIED: Darker grey instead of pure black */
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Cairo', sans-serif;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .login-button:hover {
+            background-color: #333;
+        }
+
+        /* FORGOT PASSWORD LINK */
+        /* MODIFIED: Centered, underlined link */
+        /* WHY: Target has centered "نسيت كلمة المرور؟" link */
+        .forgot-password {
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        .forgot-password a {
+            font-size: 13px;
+            color: #666;
+            text-decoration: underline;
+            transition: color 0.2s ease;
+        }
+
+        .forgot-password a:hover {
+            color: #000;
+        }
+
+        /* REGISTER LINK */
+        /* MODIFIED: Centered with border separator */
+        /* WHY: Target has register option at bottom with separator line */
+        .register-link {
+            text-align: center;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #E8E8E8;
+            /* MODIFIED: Light separator */
+        }
+
+        .register-link p {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+
+        .register-link a {
+            color: #000;
+            font-weight: 600;
+            text-decoration: underline;
+            margin-right: 5px;
+        }
+
+        .register-link a:hover {
+            color: #666;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .login-page {
+                padding: 30px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================================================
+         HEADER SECTION - SAME AS OTHER PAGES
+         - Consistent header for navigation across site
+    ============================================================ -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="index.html">The Butchery</a>
+            </div>
+
+            <div class="header-search">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Search" class="search-input">
+            </div>
+
+            <nav class="header-nav">
+                <a href="branch.html">BRANCHES</a>
+                <a href="about.html">ABOUT US</a>
+                <a href="policy.html">PRIVACY POLICY</a>
+                <a href="login.html">LOGIN</a>
+                <a href="#" class="lang-switch">عربي</a>
+                <a href="#" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ADDED: Page title bar with back button -->
+    <!-- WHY: Target has grey bar below header with "ذا بوتشري" title and back arrow -->
+    <!-- HOW: Flex layout with back button left, title center, spacer right -->
+    <div class="page-title-bar">
+        <a href="index.html" class="back-button-login">
+            <i class="fas fa-arrow-right"></i>
+        </a>
+        <h2 class="page-title-text">ذا بوتشري</h2>
+        <span style="width: 20px;"></span> <!-- Spacer for centering -->
+    </div>
+
+    <!-- ============================================================
+         LOGIN FORM SECTION - REDESIGNED TO MATCH TARGET
+         - MODIFIED: Simplified layout without white card container
+         - WHY: Target has flat design on grey background
+         - HOW: Centered form with minimal styling, Arabic text
+    ============================================================ -->
+    <div class="login-page">
+
+        <!-- LOGIN HEADER -->
+        <!-- MODIFIED: Arabic heading and subtitle -->
+        <!-- WHY: Target page is in Arabic -->
+        <div class="login-header">
+            <h1>تسجيل دخول</h1>
+            <p>يرجى تسجيل الدخول إلى حسابك لمتابعة طلباتك</p>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <!-- MODIFIED: Arabic labels, right-aligned, simplified structure -->
+        <!-- WHY: Target uses Arabic labels: "البريد الإلكتروني" and "كلمة المرور" -->
+        <form id="loginForm" onsubmit="handleLogin(event)">
+
+            <!-- EMAIL FIELD -->
+            <!-- MODIFIED: Arabic label "البريد الإلكتروني" -->
+            <!-- WHY: Target displays Arabic text throughout -->
+            <div class="form-group">
+                <label for="email" class="form-label">البريد الإلكتروني</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="أدخل بريدك الإلكتروني"
+                    required>
+            </div>
+
+            <!-- PASSWORD FIELD -->
+            <!-- MODIFIED: Arabic label "كلمة المرور" and placeholder -->
+            <div class="form-group">
+                <label for="password" class="form-label">كلمة المرور</label>
+                <input type="password" id="password" name="password" class="form-input" placeholder="أدخل كلمة المرور"
+                    required>
+            </div>
+
+            <!-- LOGIN BUTTON -->
+            <!-- MODIFIED: Arabic text "تسجيل الدخول" -->
+            <!-- WHY: Matching target's button text -->
+            <button type="submit" class="login-button">تسجيل الدخول</button>
+
+        </form>
+
+        <!-- FORGOT PASSWORD LINK -->
+        <!-- MODIFIED: Arabic text "نسيت كلمة المرور؟" -->
+        <!-- WHY: Target has this exact Arabic text -->
+        <div class="forgot-password">
+            <a href="#">نسيت كلمة المرور؟</a>
+        </div>
+
+        <!-- REGISTER LINK -->
+        <!-- MODIFIED: Arabic registration prompt "ليس لديك حساب؟ التسجيل" -->
+        <!-- WHY: Target prompts users to register in Arabic -->
+        <div class="register-link">
+            <p>ليس لديك حساب؟ <a href="#">التسجيل</a></p>
+        </div>
+
+    </div>
+
+    <!-- ============================================================
+         FOOTER SECTION - SAME AS OTHER PAGES
+         - Consistent footer design across site
+    ============================================================ -->
+    <footer class="main-footer">
+        <div class="footer-logo">
+            <img src="thebutchry.png" alt="The Butchery"
+                onerror="this.style.display='none'; this.parentElement.innerHTML='<h2>ذا بوتشري</h2>'">
+        </div>
+
+        <div class="footer-nav">
+            <a href="status.html">Order Status</a>
+            <a href="branch.html">Branches</a>
+            <a href="about.html">About Us</a>
+            <a href="policy.html">Privacy Policy</a>
+        </div>
+
+        <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <div class="footer-copy">
+            <p>&copy; 2026 The Butchery. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         JAVASCRIPT - LOGIN HANDLING
+         - Form submission handling (placeholder logic)
+         - In production would connect to authentication API
+    ============================================================ -->
+    <script>
+        // LOGIN FORM HANDLER
+        // WHY: Handle form submission and validate credentials
+        // HOW: Prevent default form action, get values, process (placeholder)
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent page reload
+
+            // Get form values
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Placeholder: In production, this would:
+            // 1. Validate inputs
+            // 2. Call authentication API
+            // 3. Store session token
+            // 4. Redirect to user dashboard or homepage
+
+            console.log('Login attempt:', email);
+
+            // Show success message in Arabic
+            alert('تم تسجيل الدخول بنجاح!\nEmail: ' + email);
+
+            // Redirect to homepage (commented for testing)
+            // window.location.href = 'index.html';
+        }
+    </script>
+
+</body>
+
+</html>

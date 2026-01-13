@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ADDED: Page title for products page -->
+    <title>Products - ذا بوتشري</title>
+
+    <!-- ADDED: Same fonts and icons as homepage for consistency -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- LINKED: Main stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- ADDED: Inline styles for product-specific components -->
+    <!-- WHY: Product page has unique layout requirements not in main CSS -->
+    <style>
+        /* PRODUCT PAGE CONTAINER */
+        /* WHY: Manages overall layout of products page */
+        .products-page {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        /* BACK NAVIGATION */
+        /* WHY: Users need to return to categories easily */
+        /* HOW: Left-aligned back button with icon */
+        .back-nav {
+            margin-bottom: 20px;
+            padding: 15px 0;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-family: 'Cairo', sans-serif;
+            color: #333;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: #000;
+        }
+
+        /* CATEGORY HEADER */
+        /* WHY: Shows which category user is browsing */
+        .category-header {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .category-header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        /* FILTER SIDEBAR */
+        /* WHY: Allows filtering by subcategory (matching target) */
+        /* HOW: Left sidebar with filter options */
+        .products-layout {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+        }
+
+        .filter-sidebar {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            height: fit-content;
+        }
+
+        .filter-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .filter-option {
+            padding: 10px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            font-size: 14px;
+        }
+
+        .filter-option:hover {
+            background-color: #f0f0f0;
+        }
+
+        .filter-option.active {
+            background-color: #f0f0f0;
+            font-weight: 600;
+        }
+
+        /* PRODUCTS GRID */
+        /* WHY: Display products in grid matching target website */
+        /* HOW: Responsive grid with 2 columns */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        /* PRODUCT CARD */
+        /* WHY: Each product displayed in card format like target */
+        /* HOW: White background, image top, info bottom, button at end */
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* PRODUCT IMAGE */
+        /* WHY: Visual representation of product */
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background-color: #f9f9f9;
+        }
+
+        /* PRODUCT INFO SECTION */
+        /* WHY: Product details and pricing */
+        .product-info {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        /* ADD TO CART BUTTON */
+        /* WHY: Primary action for each product */
+        /* HOW: Outlined button matching target design */
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #ffffff;
+            border: 2px solid #000;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Cairo', sans-serif;
+            color: #000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* RESPONSIVE: Mobile */
+        @media (max-width: 768px) {
+
+            /* WHY: Single column layout on mobile */
+            .products-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-sidebar {
+                order: 2;
+                /* Move filters below products on mobile */
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                /* Single column products */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================================================
+         HEADER SECTION - SAME AS HOMEPAGE
+         - Reused header for consistency across site
+         - All functionality matches homepage
+    ============================================================ -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="index.html">The Butchery</a>
+            </div>
+
+            <div class="header-search">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Search" class="search-input">
+            </div>
+
+            <nav class="header-nav">
+                <a href="branch.html">BRANCHES</a>
+                <a href="about.html">ABOUT US</a>
+                <a href="policy.html">PRIVACY POLICY</a>
+                <a href="login.html">LOGIN</a>
+                <a href="#" class="lang-switch">عربي</a>
+                <a href="#" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================================
+         PRODUCTS PAGE CONTENT
+         - Back navigation to return to categories
+         - Filter sidebar for subcategories
+         - Product grid with cards
+    ============================================================ -->
+    <div class="products-page">
+
+        <!-- BACK NAVIGATION -->
+        <!-- WHY: User can return to category selection -->
+        <!-- HOW: Button with arrow icon -->
+        <div class="back-nav">
+            <button class="back-button" onclick="window.history.back()">
+                <i class="fas fa-arrow-right"></i>
+                <span>Back</span>
+            </button>
+        </div>
+
+        <!-- CATEGORY HEADER -->
+        <!-- WHY: Shows which category is being viewed -->
+        <div class="category-header">
+            <h1 id="categoryTitle">Boxes</h1>
+        </div>
+
+        <!-- PRODUCTS LAYOUT: Sidebar + Grid -->
+        <div class="products-layout">
+
+            <!-- FILTER SIDEBAR -->
+            <!-- WHY: Allows filtering products by subcategory -->
+            <!-- HOW: Clickable options that filter grid -->
+            <aside class="filter-sidebar">
+                <div class="filter-title">All</div>
+                <!-- PLACEHOLDER: Add more filter options as needed -->
+                <!-- <div class="filter-option">Subcategory 1</div> -->
+                <!-- <div class="filter-option">Subcategory 2</div> -->
+            </aside>
+
+            <!-- PRODUCTS GRID -->
+            <!-- WHY: Main content area displaying products -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Javascript will populate this -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ============================================================
+         FOOTER SECTION - SAME AS HOMEPAGE
+         - Reused footer for consistency
+    ============================================================ -->
+    <footer class="main-footer">
+        <div class="footer-logo">
+            <img src="thebutchry.png" alt="The Butchery"
+                onerror="this.style.display='none'; this.parentElement.innerHTML='<h2>THE BUTCHERY</h2>'">
+        </div>
+
+        <div class="footer-nav">
+            <a href="status.html">ORDER STATUS</a>
+            <a href="branch.html">BRANCHES</a>
+            <a href="about.html">ABOUT US</a>
+            <a href="policy.html">PRIVACY POLICY</a>
+        </div>
+
+        <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <div class="footer-copy">
+            <p>&copy; 2026 The Butchery. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         JAVASCRIPT
+         - Dynamic Product Rendering
+         - Real Images from Unsplash
+    ============================================================ -->
+    <script>
+        // PRODUCT DATA
+        const productsData = {
+            'boxes': [
+                { title: 'Hawawshi Box', price: '9.750 KWD', image: 'https://images.unsplash.com/photo-1560155016-bd4879ae8f21?w=800&fit=crop', desc: 'Delicious Hawawshi selection' },
+                { title: 'Kashta Box', price: '24.000 KWD', image: 'https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=800&fit=crop', desc: 'Perfect for outdoor gatherings' },
+                { title: 'Family Box', price: '18.500 KWD', image: 'https://images.unsplash.com/photo-1526016650454-68a6f488910a?w=800&fit=crop', desc: 'Enough for the whole family' },
+                { title: 'Grill Master Box', price: '32.000 KWD', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&fit=crop', desc: 'Everything you need for grilling' }
+            ],
+            'skewers': [
+                { title: 'Adana Kebab', price: '4.500 KWD', image: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800&fit=crop', desc: 'Spicy minced meat skewers' },
+                { title: 'Shish Tawook', price: '4.000 KWD', image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=800&fit=crop', desc: 'Marinated chicken breast chunks' },
+                { title: 'Lamb Tikka', price: '5.250 KWD', image: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=800&fit=crop', desc: 'Tender lamb cubes' },
+                { title: 'Vegetable Skewers', price: '2.500 KWD', image: 'https://images.unsplash.com/photo-1532188978303-452f03d7c269?w=800&fit=crop', desc: 'Fresh grilled vegetables' }
+            ],
+            'burgers': [
+                { title: 'Classic Beef Burger', price: '3.500 KWD', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&fit=crop', desc: 'Authentic taste' },
+                { title: 'Wagyu Burger', price: '6.000 KWD', image: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=800&fit=crop', desc: 'Premium Wagyu beef' },
+                { title: 'Crispy Chicken', price: '3.000 KWD', image: 'https://images.unsplash.com/photo-1615297928064-24977384d0f9?w=800&fit=crop', desc: 'Fried to perfection' }
+            ],
+            'steaks': [
+                { title: 'Ribeye Steak', price: '12.000 KWD', image: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800&fit=crop', desc: 'Rich marbling' },
+                { title: 'Tenderloin', price: '14.500 KWD', image: 'https://images.unsplash.com/photo-1560781290-7dc94c0f8f4f?w=800&fit=crop', desc: 'The most tender cut' },
+                { title: 'T-Bone', price: '13.000 KWD', image: 'https://images.unsplash.com/photo-1546833999-b9f5816029bd?w=800&fit=crop', desc: 'Best of both worlds' }
+            ],
+            'kabsa': [
+                { title: 'Chicken Kabsa', price: '5.500 KWD', image: 'https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?w=800&fit=crop', desc: 'Traditional spiced rice with chicken' },
+                { title: 'Lamb Kabsa', price: '7.000 KWD', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&fit=crop', desc: 'Slow cooked lamb with rice' }
+            ],
+            'new': [
+                { title: 'Winter BBQ Kit', price: '28.000 KWD', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&fit=crop', desc: 'Limited edition' },
+                { title: 'Spicy Wings', price: '3.000 KWD', image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=800&fit=crop', desc: 'New Firecracker sauce' }
+            ]
+        };
+
+        // DOM ELEMENTS
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category') || 'new'; // Default to new
+        const categoryTitle = document.getElementById('categoryTitle');
+        const productsGrid = document.getElementById('productsGrid');
+
+        // INITIALIZE PAGE
+        function initPage() {
+            // Set Title
+            if (categoryTitle) {
+                categoryTitle.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+            }
+
+            // Render Products
+            renderProducts(category);
+        }
+
+        function renderProducts(cat) {
+            productsGrid.innerHTML = ''; // Clear existing
+
+            const items = productsData[cat] || [];
+
+            if (items.length === 0) {
+                productsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">No products found in this category.</p>';
+                return;
+            }
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-image-container" style="overflow: hidden; height: 250px;">
+                        <img src="${item.image}" alt="${item.title}" class="product-image" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${item.title}</h3>
+                        <p style="color: #666; font-size: 13px; margin-bottom: 8px;">${item.desc}</p>
+                        <p class="product-price">${item.price}</p>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">+ Add To Cart</button>
+                    </div>
+                `;
+                productsGrid.appendChild(card);
+            });
+        }
+
+        // ADD TO CART FUNCTION
+        function addToCart(btn) {
+            btn.textContent = '✓ Added!';
+            btn.style.backgroundColor = '#000';
+            btn.style.color = '#fff';
+
+            // Update cart count
+            const cartCount = document.querySelector('.cart-count');
+            if (cartCount) {
+                let count = parseInt(cartCount.textContent) || 0;
+                cartCount.textContent = count + 1;
+            }
+
+            setTimeout(() => {
+                btn.textContent = '+ Add To Cart';
+                btn.style.backgroundColor = '#fff';
+                btn.style.color = '#000';
+            }, 2000);
+        }
+
+        // Run
+        initPage();
+    </script>
+
+</body>
+
+</html>
